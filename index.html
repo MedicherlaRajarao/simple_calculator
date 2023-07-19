@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <!-- Add buttons for digits and operators here -->
+      <button class="button button-3" onclick="clearDisplay()">C</button>
+      <button class="button button-3" onclick="backspace()">&#9003;</button>
+      <button class="button button-3" onclick="addToDisplay('%')">%</button>
+      <button class="button button-3" onclick="addToDisplay('/')">/</button>
+      <button class="button button-1" onclick="addToDisplay('1')">1</button>
+      <button class="button button-1" onclick="addToDisplay('2')">2</button>
+      <button class="button button-1" onclick="addToDisplay('3')">3</button>
+      <button class="button button-2" onclick="addToDisplay('*')">*</button>
+      <button class="button button-1" onclick="addToDisplay('4')">4</button>
+      <button class="button button-1" onclick="addToDisplay('5')">5</button>
+      <button class="button button-1" onclick="addToDisplay('6')">6</button>
+      <button class="button button-2" onclick="addToDisplay('-')">-</button>
+      <button class="button button-1" onclick="addToDisplay('7')">7</button>
+      <button class="button button-1" onclick="addToDisplay('8')">8</button>
+      <button class="button button-1" onclick="addToDisplay('9')">9</button>
+      <button class="button button-2" onclick="addToDisplay('+')">+</button>
+      <button class="button button-1" onclick="addToDisplay('00')">00</button>
+      <button class="button button-1" onclick="addToDisplay('0')">0</button>
+      <button class="button button-1" onclick="addToDisplay('.')">.</button>
+      <button class="button button-2" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let displayValue = "0"; // Variable to store the current display value
+  
+    function addToDisplay(value) {
+      if (displayValue === "0") {
+        displayValue = value;
+      } else {
+        displayValue += value;
+      }
+      updateDisplay();
+    }
+  
+    function calculate() {
+      const display = document.getElementById('display');
+      displayValue = eval(displayValue);
+      updateDisplay();
+    }
+  
+    function clearDisplay() {
+      displayValue = '0';
+      updateDisplay();
+    }
+  
+    function backspace() {
+      if (displayValue.length === 1) {
+        displayValue = "0";
+      } else {
+        displayValue = displayValue.slice(0, -1);
+      }
+      updateDisplay();
+    }
+  
+    function updateDisplay() {
+      const display = document.getElementById('display');
+      display.textContent = displayValue;
+    }
+  </script>
+</body>
+</html>
